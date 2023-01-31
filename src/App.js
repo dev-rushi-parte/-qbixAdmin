@@ -8,6 +8,7 @@ import {
     Notification, BlankPage, Settings
 } from "./pages/master";
 import EditProduct from "./pages/master/EditProduct";
+import ProductVariable from "./pages/master/ProductVariable";
 
 export default function App() {
     return (
@@ -26,6 +27,7 @@ export default function App() {
                         <Route path="/product-list" element={<ProductList />} />
                         <Route path="/product-view:id" element={<ProductView />} />
                         <Route path="/product-edit:id" element={<EditProduct />} />
+                        <Route path="/product-variable:id" element={<ProductVariable />} />
                         <Route path="/product-upload" element={<ProductUpload />} />
                         <Route path="/invoice-list" element={<InvoiceList />} />
                         <Route path="/invoice-details" element={<InvoiceDetails />} />

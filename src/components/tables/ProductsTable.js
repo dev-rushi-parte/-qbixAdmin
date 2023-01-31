@@ -117,7 +117,7 @@ export default function ProductsTable({ thead, tbody, setStatusChange }) {
                             <Td>
                                 <Box className="mc-table-action">
                                     <Anchor href={`/product-view${item._id}`} title="View" className="material-icons view">visibility</Anchor >
-                                    {/* <Anchor href={`/product-edit${item._id}`} title="View" className="material-icons view">brand</Anchor > */}
+                                    <Anchor href={`/product-variable${item._id}`} title="View" className="material-icons ">add</Anchor >
                                     <Anchor href={`/product-edit${item._id}`} title="Edit" className="material-icons edit">edit</Anchor>
                                     <Button title="Delete" className="material-icons delete" onClick={() => handelShow(item._id)}>delete</Button>
                                 </Box>

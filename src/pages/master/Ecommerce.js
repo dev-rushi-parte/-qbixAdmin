@@ -15,7 +15,7 @@ export default function Ecommerce() {
             navigate("/login")
         }
     }, [])
-    
+
     return (
         <PageLayout>
             <Row>
@@ -59,13 +59,13 @@ export default function Ecommerce() {
                         chart={data?.sales.chart}
                     />
                 </Col> */}
-                <Col xl={12}>
+                {/* <Col xl={12}>
                     <ProductsCard
                         title={data?.products.title}
                         dotsMenu={data?.products.dotsMenu}
                         table={data?.products.table}
                     />
-                </Col>
+                </Col> */}
                 {/* <Col xl={8}>
                     <RevenueCard
                         title={data?.revenue.title}

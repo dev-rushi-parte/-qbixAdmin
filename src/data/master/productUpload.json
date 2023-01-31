@@ -1,5 +1,12 @@
 {
     "pageTitle": "product upload",
+    "pageTitleEdit": "product Edit",
+    "pageTitlevariable": "product Variable Update",
+    "breadcrumbEdit": [
+        { "path": "/", "text": "home" },
+        { "text": "product" },
+        { "text": "Edit" }
+    ],
     "breadcrumb": [
         { "path": "/", "text": "home" },
         { "text": "product" },

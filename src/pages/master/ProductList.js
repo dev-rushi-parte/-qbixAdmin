@@ -36,7 +36,7 @@ export default function ProductList() {
                         </Breadcrumb>
                     </CardLayout>
                 </Col>
-                {data?.float.map((item, index) => (
+                {/* {data?.float.map((item, index) => (
                     <Col key={index} sm={6} lg={4}>
                         <FloatCard
                             variant={item.variant}
@@ -45,7 +45,7 @@ export default function ProductList() {
                             icon={item.icon}
                         />
                     </Col>
-                ))}
+                ))} */}
                 <Col xl={12}>
                     <CardLayout>
                         <Row>
