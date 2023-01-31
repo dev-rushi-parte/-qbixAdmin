@@ -1,0 +1,87 @@
+{
+    "navs": [
+        {
+            "title": "master",
+            "menu": [
+                {
+                    "icon": "dashboard",
+                    "text": "dashboard",
+                    "submenu": [
+                        {
+                            "href": "/",
+                            "text": "home"
+                        }
+                    ]
+                },
+                {
+                    "icon": "lock",
+                    "text": "authentication",
+                    "submenu": [
+                        {
+                            "href": "/login",
+                            "text": "login"
+                        },
+                        {
+                            "href": "/register",
+                            "text": "registration"
+                        },
+                        {
+                            "href": "/forgot-password",
+                            "text": "forgot password"
+                        }
+                    ]
+                },
+                {
+                    "icon": "account_circle",
+                    "text": "users",
+                    "badge": {
+                        "text": "hot",
+                        "variant": "red square"
+                    },
+                    "submenu": [
+                        {
+                            "href": "/user-list",
+                            "text": "user list"
+                        },
+                        {
+                            "href": "/user-profile",
+                            "text": "user profile"
+                        },
+                        {
+                            "href": "/my-account",
+                            "text": "my account"
+                        }
+                    ]
+                },
+                {
+                    "icon": "pix",
+                    "text": "products",
+                    "badge": {
+                        "text": "new",
+                        "variant": "purple square"
+                    },
+                    "submenu": [
+                        {
+                            "href": "/product-list",
+                            "text": "product list"
+                        },
+                        {
+                            "href": "/product-upload",
+                            "text": "product upload"
+                        }
+                    ]
+                },
+                {
+                    "href": "/settings",
+                    "icon": "settings",
+                    "text": "settings"
+                }
+            ]
+        }
+    ],
+    "button": {
+        "icon": "lock",
+        "path": "/login",
+        "text": "logout"
+    }
+}
