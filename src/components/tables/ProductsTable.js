@@ -5,7 +5,7 @@ import { Anchor, Heading, Box, Text, Input, Image, Icon, Button } from "../eleme
 import { Link, useNavigate } from "react-router-dom";
 import { getLocalData } from "../../Utils/localStorage";
 
-export default function ProductsTable({ thead, tbody, setStatus }) {
+export default function ProductsTable({ thead, tbody, setStatusChange }) {
 
     const [alertModal, setAlertModal] = useState(false);
     const [data, setData] = useState([]);
@@ -46,7 +46,7 @@ export default function ProductsTable({ thead, tbody, setStatus }) {
                 // setproductData(res.data[0])
                 console.log(res)
                 setAlertModal(false)
-                setStatus(prv => !prv)
+                setStatusChange(prv => !prv)
 
             })
 

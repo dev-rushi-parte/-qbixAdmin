@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import { Breadcrumb } from "../../components";
 import PageLayout from "../../layouts/PageLayout";
 import data from "../../data/master/ecommerce.json";
 import { Box, Item, Anchor } from "../../components/elements";
 import { EcommerceCard, SalesCard, ProductsCard, RevenueCard, ClientsCard, ActivityCard, OrdersCard } from "../../components/cards";
+import { getLocalData } from "../../Utils/localStorage";
+import { useNavigate } from "react-router-dom";
 
 export default function Ecommerce() {
+    const navigate = useNavigate()
+    useEffect(() => {
+        if (!getLocalData("boxApi")) {
+            navigate("/login")
+        }
+    }, [])
+    
     return (
         <PageLayout>
             <Row>
@@ -21,7 +30,7 @@ export default function Ecommerce() {
                         </Breadcrumb>
                     </Box>
                 </Col>
-                <Col xs={12} xl={8}>
+                {/* <Col xs={12} xl={8}>
                     <Row xs={1} sm={2}>
                         {data?.heros?.map((item, index) => (
                             <Col key={index}>
@@ -38,8 +47,8 @@ export default function Ecommerce() {
                             </Col>
                         ))}
                     </Row>
-                </Col>
-                <Col xs={12} xl={4}>
+                </Col> */}
+                {/* <Col xs={12} xl={4}>
                     <SalesCard
                         title={data?.sales.title}
                         amount={data?.sales.amount}
@@ -49,7 +58,7 @@ export default function Ecommerce() {
                         compare={data?.sales.compare}
                         chart={data?.sales.chart}
                     />
-                </Col>
+                </Col> */}
                 <Col xl={12}>
                     <ProductsCard
                         title={data?.products.title}
@@ -57,35 +66,35 @@ export default function Ecommerce() {
                         table={data?.products.table}
                     />
                 </Col>
-                <Col xl={8}>
+                {/* <Col xl={8}>
                     <RevenueCard
                         title={data?.revenue.title}
                         field={data?.revenue.field}
                         report={data?.revenue.report}
                         chart={data?.revenue.chart}
                     />
-                </Col>
-                <Col xl={4}>
+                </Col> */}
+                {/* <Col xl={4}>
                     <OrdersCard
                         title={data?.orders.title}
                         dotsMenu={data?.orders.dotsMenu}
                         items={data?.orders.items}
                     />
-                </Col>
-                <Col xl={6}>
+                </Col> */}
+                {/* <Col xl={6}>
                     <ClientsCard
                         title={data?.clients.title}
                         dotsMenu={data?.clients.dotsMenu}
                         table={data?.clients.table}
                     />
-                </Col>
-                <Col xl={6}>
+                </Col> */}
+                {/* <Col xl={6}>
                     <ActivityCard
                         title={data?.activity.title}
                         dotsMenu={data?.activity.dotsMenu}
                         items={data?.activity.items}
                     />
-                </Col>
+                </Col> */}
             </Row>
         </PageLayout>
     );

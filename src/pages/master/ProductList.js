@@ -11,7 +11,7 @@ import { getLocalData } from "../../Utils/localStorage";
 
 export default function ProductList() {
     const [tbody, setTbody] = useState()
-    const [status, setStatus] = useState(false)
+    const [status, setStatusChange] = useState(false)
     // let thead = ["product", "category", "brand", "price", "stock", "rating", "order", "sales", "action"],
     useEffect(() => {
         fetch(`https://qbix54.onrender.com/admin/allproduct?admin_jwt=${getLocalData("boxApi")}`)
@@ -65,7 +65,7 @@ export default function ProductList() {
                                 <ProductsTable
                                     thead={data?.product.thead}
                                     tbody={tbody}
-                                    setStatus={setStatus}
+                                    setStatusChange={setStatusChange}
                                 />
                                 <Pagination />
                             </Col>
