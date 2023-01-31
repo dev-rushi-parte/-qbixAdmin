@@ -10,6 +10,8 @@ import { getLocalData } from "../../Utils/localStorage";
 export default function ProductsCard({ title, dotsMenu, table }) {
     const [tbody, setTbody] = useState()
 
+
+    
     useEffect(() => {
         fetch(`https://qbix54.onrender.com/admin/allproduct?admin_jwt=${getLocalData("boxApi")}`)
             .then((res) => res.json())
