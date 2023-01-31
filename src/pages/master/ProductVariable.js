@@ -94,7 +94,7 @@ export default function ProductVariable() {
                     <CardLayout>
                         <CardHeader title="basic information" dotsMenu={data?.dotsMenu} />
                         <Row>
-                            <Col xl={6}><LabelField value={productData?.isvariable} onChange={handleChange} name='isvariable' label="isvariable" option={['0', '1']} fieldSize="w-100 h-md" /></Col>
+                            <Col xl={6}><LabelField value={productData?.isvariable} onChange={handleChange} name='isvariable' label="isvariable" option={['No', 'Yes']} fieldSize="w-100 h-md" /></Col>
                             <Col xl={12}><LabelField value={productData?.producttitle} onChange={handleChange} name='producttitle' type="text" label="title" fieldSize="w-100 h-md" /></Col>
                             <Col xl={12}><LabelTextarea value={productData?.productdescription} onChange={handleChange} name='productdescription' label="description" fieldSize="w-100 h-text-md" /></Col>
                             <Col xl={12}><LabelTextarea value={productData?.specifications} onChange={handleChange} name='specifications' label="specifications" fieldSize="w-100 h-text-md" /></Col>
