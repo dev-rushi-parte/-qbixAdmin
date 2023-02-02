@@ -31,6 +31,7 @@ export default function ProductView() {
 
             })
     }, [])
+    console.log(productData?.productimage1 == "")
     return (
         <PageLayout>
             <CardLayout className="mb-4">
@@ -46,10 +47,13 @@ export default function ProductView() {
                             <DivideTitle title="product gallery" className="mb-4" />
                             <Box className="mc-product-view-gallery">
                                 {/* {data?.gallery.map((item, index) => ( */}
-                                <Image src={productData?.productimage1} alt={productData?.producttitle} />
-                                <Image src={productData?.productimage2} alt={productData?.producttitle} />
+                                {productData?.productimage1 == "" ? "" : <Image src={productData?.productimage1} alt={productData?.producttitle} />}
+                                {productData?.productimage2 == "" ? "" : <Image src={productData?.productimage2} alt={productData?.producttitle} />}
+                                {productData?.productimage3 == "" ? "" : <Image src={productData?.productimage3} alt={productData?.producttitle} />}
+                                {productData?.productimage4 == "" ? "" : <Image src={productData?.productimage4} alt={productData?.producttitle} />}
+                                {/* <Image src={productData?.productimage2} alt={productData?.producttitle} />
                                 <Image src={productData?.productimage3} alt={productData?.producttitle} />
-                                <Image src={productData?.productimage4} alt={productData?.producttitle} />
+                                <Image src={productData?.productimage4} alt={productData?.producttitle} /> */}
                                 {/* ))} */}
                             </Box>
                         </Col>
@@ -96,12 +100,13 @@ export default function ProductView() {
                                     <Text as="span">:</Text>
                                     <Text as="p">{productData?.productstatus}</Text>
                                 </Box>
-                                <Box className="mc-product-view-meta">
-                                    <Icon type={'store'} />
-                                    <Heading as="h5">{'specifications'}</Heading>
-                                    <Text as="span">:</Text>
-                                    <Text as="p">{productData?.specifications}</Text>
-                                </Box>
+
+                            </Box>
+                        </Col>
+                        <Col xl={12}>
+                            <DivideTitle title="product specifications" className="mt-5 mb-4" />
+                            <Box className="mc-product-view-descrip">
+                                <Text>{productData?.specifications}</Text>
                             </Box>
                         </Col>
                         <Col xl={12}>

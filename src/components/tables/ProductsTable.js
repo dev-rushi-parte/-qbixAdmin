@@ -60,12 +60,7 @@ export default function ProductsTable({ thead, tbody, handleChange }) {
                     <Tr>
                         <Th>
                             <Box className="mc-table-check">
-                                <Input
-                                    type="checkbox"
-                                    name="allCheck"
-                                    checked={data?.filter((item) => item.isChecked !== true).length < 1}
-                                    onChange={handleCheckbox}
-                                />
+
                                 <Text>uid</Text>
                             </Box>
                         </Th>
@@ -79,13 +74,8 @@ export default function ProductsTable({ thead, tbody, handleChange }) {
                         <Tr key={index}>
                             <Td title={index + 1}>
                                 <Box className="mc-table-check">
-                                    <Input
-                                        type="checkbox"
-                                        name={item.name}
-                                        checked={item?.isChecked || false}
-                                        onChange={handleCheckbox}
-                                    />
-                                    <Text>#{index + 1}</Text>
+
+                                    <Text>{index + 1}</Text>
                                 </Box>
                             </Td>
                             <Td>
