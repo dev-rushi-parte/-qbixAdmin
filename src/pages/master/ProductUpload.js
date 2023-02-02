@@ -30,10 +30,13 @@ export default function ProductUpload() {
             .then((res) => {
                 // console.log(res.data)
                 setCategoryData(res.data)
+                let stack = []
                 res.data.map((item, i) => (
                     // console.log(item.categorytitle)
-                    setCategory([...category, category.push(item.categorytitle)])
+                    stack.push(item.categorytitle)
                 ))
+                setCategory(stack)
+                console.log(stack)
             })
     }, [])
 
@@ -65,25 +68,20 @@ export default function ProductUpload() {
 
     const handelSubmit = () => {
 
-        if (productData.productcategoryid !== "" && productData.productcategoryname && productData.productdescription && productData.productimage1 &&
-            productData.productprice && productData.producttitle && productData.productstatus && productData.isdiscount &&
-            productData.productvariation && productData.specifications && productData.variationtype) {
-            // console.log(productData)
-            fetch(`https://qbix54.onrender.com/admin/addproduct/?admin_jwt=${getLocalData("boxApi")}`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(productData)
+
+        // console.log(productData)
+        fetch(`https://qbix54.onrender.com/admin/addproduct/?admin_jwt=${getLocalData("boxApi")}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(productData)
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                // setproductData(res.data[0])
+                // console.log(res)
+                navigate("/product-list")
             })
-                .then((res) => res.json())
-                .then((res) => {
-                    // setproductData(res.data[0])
-                    // console.log(res)
-                    navigate("/product-list")
-                })
-        }
-        else {
-            alert("Please Fill all Fields")
-        }
+
     }
     return (
         <PageLayout>
