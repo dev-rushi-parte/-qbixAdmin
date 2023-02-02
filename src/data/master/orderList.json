@@ -4,14 +4,8 @@
         { "path": "/", "text": "home" },
         { "text": "order-list" }
     ],
-    "dotsMenu": {
-        "dots": "more_horiz",
-        "dropdown": [
-            { "icon": "edit", "text": "edit" },
-            { "icon": "delete", "text": "delete" },
-            { "icon": "download", "text": "download" }
-        ]
-    },
+
+
     "float": [
         { "title": "pending orders", "digit": "547", "icon": "pending", "variant": "lg purple" }, 
         { "title": "shipped orders", "digit": "398", "icon": "local_shipping", "variant": "lg blue" },
@@ -19,13 +13,10 @@
         { "title": "cancelled orders", "digit": "249", "icon": "remove_circle", "variant": "lg red" }
     ],
     "filter":[
-        { "label": "show by", "option": ["12 row", "24 row", "36 row"] },
-        { "label": "status by", "option": ["pending", "shipped", "recieved", "cancelled"] },
-        { "label": "issued by", "type": "date" },
-        { "label": "search by", "type": "search", "placeholder": "id / name / email" }
+        { "label": "Order status by", "option": ["select","pending", "completed"] }
     ],
     "table":{
-        "thead": ["client", "product", "amount", "payment", "status", "date time", "action"],
+        "thead": [ "product", "amount", "payment", "status","admin message", "date time", "action"],
         "tbody": [
             {
                 "id": "#4980",

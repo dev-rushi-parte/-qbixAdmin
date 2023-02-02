@@ -26,7 +26,7 @@
         { "label": "search by", "type": "search", "placeholder": "id / name / email / number" }
     ],
     "table":{
-        "thead": ["name", "role", "email", "password", "phone", "status", "created", "action"],
+        "thead": ["name",  "email",  "phone",  "created", "action"],
         "tbody": [
             {
                 "role": { "icon": "person", "text": "member" },

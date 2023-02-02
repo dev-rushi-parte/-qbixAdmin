@@ -18,7 +18,7 @@ export default function EcommerceCard({ variant, trend, number, title, icon, per
                     <Text as="mark">{ percent }</Text>
                     <Text as="span">{ compare }</Text>
                 </Box>
-                <DotsMenu dots={ dotsMenu.dots } dropdown={ dotsMenu.dropdown } />
+                {/* <DotsMenu dots={ dotsMenu.dots } dropdown={ dotsMenu.dropdown } /> */}
             </Box>
         </Box>
     );

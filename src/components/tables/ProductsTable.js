@@ -5,7 +5,7 @@ import { Anchor, Heading, Box, Text, Input, Image, Icon, Button } from "../eleme
 import { Link, useNavigate } from "react-router-dom";
 import { getLocalData } from "../../Utils/localStorage";
 
-export default function ProductsTable({ thead, tbody, setStatusChange }) {
+export default function ProductsTable({ thead, tbody, handleChange }) {
 
     const [alertModal, setAlertModal] = useState(false);
     const [data, setData] = useState([]);
@@ -35,9 +35,8 @@ export default function ProductsTable({ thead, tbody, setStatusChange }) {
         setAlertModal(true)
         setDeleteId(id)
     }
-    console.log(deleteId)
-    const handelDelete = () => {
 
+    const handelDelete = () => {
         fetch(`https://qbix54.onrender.com/admin/deleteproduct/${deleteId}?admin_jwt=${getLocalData("boxApi")}`, {
             method: "DELETE"
         })
@@ -46,7 +45,8 @@ export default function ProductsTable({ thead, tbody, setStatusChange }) {
                 // setproductData(res.data[0])
                 console.log(res)
                 setAlertModal(false)
-                setStatusChange(prv => !prv)
+                handleChange(prv => !prv)
+
 
             })
 

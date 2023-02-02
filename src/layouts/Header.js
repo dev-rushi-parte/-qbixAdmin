@@ -28,6 +28,7 @@ export default function Header() {
     return (
         <Section as="header" className={`mc-header ${ scroll }`}>
             <Logo 
+           
                 src = { data?.logo.src }
                 alt = { data?.logo.alt }
                 name = { data?.logo.name }
@@ -35,22 +36,22 @@ export default function Header() {
             />
             <Box className="mc-header-group">
                 <Box className="mc-header-left">
-                    <Button 
+                    {/* <Button 
                         icon={ data?.search.icon } 
                         className="mc-header-icon search" 
                         onClick={()=> setSearch("show")}
-                    />
+                    /> */}
                     <Button 
                         icon={ drawer ? "menu_open" : "menu" } 
                         className="mc-header-icon toggle" 
                         onClick={ toggleDrawer } 
                     />
-                    <Box className={`mc-header-search-group ${ search }`}>
+                    {/* <Box className={`mc-header-search-group ${ search }`}>
                         <form className="mc-header-search" ref={ searchRef }>
                             <Button className="material-icons">{ data?.search.icon }</Button>
                             <Input type="search" placeholder={ data?.search.placeholder } />
                         </form>
-                    </Box>
+                    </Box> */}
                 </Box>
                 <Box className="mc-header-right">
                     <Button 
@@ -62,13 +63,13 @@ export default function Header() {
                   
                   
                    
-                   
+{/*                    
                     <ProfileDropdown 
                         name={ data.profile.name }
                         image={ data.profile.image }
                         username={ data.profile.username }
                         dropdown={ data.profile.dropdown }
-                    />
+                    /> */}
                 </Box>
             </Box>
         </Section>

@@ -20,46 +20,23 @@
                         {
                             "href": "/login",
                             "text": "login"
-                        },
-                        {
-                            "href": "/register",
-                            "text": "registration"
-                        },
-                        {
-                            "href": "/forgot-password",
-                            "text": "forgot password"
                         }
+                        
                     ]
                 },
                 {
                     "icon": "account_circle",
                     "text": "users",
-                    "badge": {
-                        "text": "hot",
-                        "variant": "red square"
-                    },
                     "submenu": [
                         {
                             "href": "/user-list",
                             "text": "user list"
-                        },
-                        {
-                            "href": "/user-profile",
-                            "text": "user profile"
-                        },
-                        {
-                            "href": "/my-account",
-                            "text": "my account"
                         }
                     ]
                 },
                 {
                     "icon": "pix",
                     "text": "products",
-                    "badge": {
-                        "text": "new",
-                        "variant": "purple square"
-                    },
                     "submenu": [
                         {
                             "href": "/product-list",
@@ -72,6 +49,16 @@
                     ]
                 },
                 {
+                    "href": "/order-list",
+                    "icon": "shopping_cart",
+                    "text": "orders"
+                },
+                {
+                    "href": "/slider_img",
+                    "icon": "image",
+                    "text": "SliderImg"
+                },
+                {
                     "href": "/settings",
                     "icon": "settings",
                     "text": "settings"
@@ -81,7 +68,6 @@
     ],
     "button": {
         "icon": "lock",
-        "path": "/login",
         "text": "logout"
     }
 }

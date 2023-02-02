@@ -1,15 +1,15 @@
 {
     "logo": {
         "path": "/",
-        "src": "images/logo.webp",
+        "src": "images/hth.jpg",
         "alt": "blue",
-        "name": "hotash"
+        "name": "HTH"
     },
     "pattern": {
         "src": "images/pattern.webp",
         "alt": "line-pattern"
     },
-    "title": "Login to Hotash",
+    "title": "Login to HTH",
     "input": [
         {
             "name": "email",

@@ -1,71 +1,136 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { Breadcrumb } from "../../components";
 import PageLayout from "../../layouts/PageLayout";
 import data from "../../data/master/ecommerce.json";
 import { Box, Item, Anchor } from "../../components/elements";
 import { EcommerceCard, SalesCard, ProductsCard, RevenueCard, ClientsCard, ActivityCard, OrdersCard } from "../../components/cards";
-import { getLocalData } from "../../Utils/localStorage";
+import { getLocalData, SaveTheToken } from "../../Utils/localStorage";
 import { useNavigate } from "react-router-dom";
+import { LoaderProvider } from "../../context/Preloader";
+
 
 export default function Ecommerce() {
     const navigate = useNavigate()
+    const [state, setState] = useState(false)
+    const [loading, setLoading] = useState(true)
     useEffect(() => {
+
+
+        
+        fetch(`https://qbix54.onrender.com/admin/allusers?admin_jwt=${getLocalData("boxApi")}`)
+            .then((res) => res.json())
+            .then((res) => {
+
+                SaveTheToken("allusers", res.data.length)
+                setState(prv => !prv)
+                setLoading(false)
+
+            })
+
+
+
+       
+        fetch(`https://qbix54.onrender.com/admin/allorders?admin_jwt=${getLocalData("boxApi")}`)
+            .then((res) => res.json())
+            .then((res) => {
+
+                SaveTheToken("allorders", res.data.length)
+                setState(prv => !prv)
+                setLoading(false)
+
+
+            })
+        fetch(`https://qbix54.onrender.com/admin/allproduct?admin_jwt=${getLocalData("boxApi")}`)
+            .then((res) => res.json())
+            .then((res) => {
+                setLoading(false)
+                SaveTheToken("allproducts", res.data.length)
+                setState(prv => !prv)
+
+            })
+
         if (!getLocalData("boxApi")) {
             navigate("/login")
         }
     }, [])
 
+
     return (
+
+
         <PageLayout>
             <Row>
                 <Col xl={12}>
                     <Box className="mc-card">
                         <Breadcrumb title={data?.pageTitle}>
-                            {data?.breadcrumb?.map((item, index) => (
-                                <Item key={index} className="mc-breadcrumb-item">
-                                    {item.path ? <Anchor className="mc-breadcrumb-link" href={item.path}>{item.text}</Anchor> : item.text}
-                                </Item>
-                            ))}
+
                         </Breadcrumb>
                     </Box>
                 </Col>
-                {/* <Col xs={12} xl={8}>
-                    <Row xs={1} sm={2}>
-                        {data?.heros?.map((item, index) => (
-                            <Col key={index}>
+                <LoaderProvider loading={loading}>
+                    <Col xs={12} xl={8}>
+                        <Row xs={1} sm={2}>
+                            {/* {data?.heros?.map((item, index) => ( */}
+                            <Col >
                                 <EcommerceCard
-                                    icon={item.icon}
-                                    trend={item.trend}
-                                    title={item.title}
-                                    number={item.number}
-                                    variant={item.variant}
-                                    percent={item.percent}
-                                    compare={item.compare}
-                                    dotsMenu={item.dotsMenu}
+                                    icon={"account_circle"}
+                                    // trend={'trending_up'}
+                                    title={"total users"}
+                                    number={getLocalData('allusers')}
+                                    variant={"green"}
+                                // percent={item.percent}
+                                // compare={item.compare}
+                                // dotsMenu={item.dotsMenu}
                                 />
                             </Col>
-                        ))}
-                    </Row>
-                </Col> */}
-                {/* <Col xs={12} xl={4}>
-                    <SalesCard
-                        title={data?.sales.title}
-                        amount={data?.sales.amount}
-                        percent={data?.sales.percent}
-                        trendIcon={data?.sales.trendIcon}
-                        dotsMenu={data?.sales.dotsMenu}
-                        compare={data?.sales.compare}
-                        chart={data?.sales.chart}
-                    />
-                </Col> */}
-                {/* <Col xl={12}>
-                    <ProductsCard
-                        title={data?.products.title}
-                        dotsMenu={data?.products.dotsMenu}
-                        table={data?.products.table}
-                    />
-                </Col> */}
+                            <Col >
+                                <EcommerceCard
+                                    icon={"shopping_cart"}
+                                    // trend={'trending_down'}
+                                    title={"total orders"}
+                                    number={getLocalData('allorders')}
+                                    variant={"purple"}
+                                // percent={item.percent}
+                                // compare={item.compare}
+                                // dotsMenu={item.dotsMenu}
+                                />
+                            </Col>
+                            <Col >
+                                <EcommerceCard
+                                    icon={"shopping_bag"}
+                                    // trend={'trending_down'}
+                                    title={"total products"}
+                                    number={getLocalData('allproducts')}
+                                    variant={"blue"}
+                                // percent={item.percent}
+                                // compare={item.compare}
+                                // dotsMenu={item.dotsMenu}
+                                />
+                            </Col>
+                            {/* ))} */}
+                        </Row>
+                    </Col>
+                    <Col xs={12} xl={4}>
+                        <SalesCard
+                            title={"Total Revenue"}
+                            amount={"₹40000"}
+                            // percent={data?.sales.percent}
+                            // trendIcon={data?.sales.trendIcon}
+                            // dotsMenu={data?.sales.dotsMenu}
+                            compare={"₹40000"}
+                        // chart={data?.sales.chart}
+                        />
+                    </Col>
+                    <Col xl={12}>
+                        <ProductsCard
+                            title={data?.products.title}
+                            dotsMenu={data?.products.dotsMenu}
+                            table={data?.products.table}
+                        />
+                    </Col>
+                </LoaderProvider>
+
                 {/* <Col xl={8}>
                     <RevenueCard
                         title={data?.revenue.title}

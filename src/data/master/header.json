@@ -1,9 +1,9 @@
 {
     "logo": {
         "path": "/",
-        "src": "images/logo.webp",
+        "src": "images/hth.jpg",
         "alt": "blue",
-        "name": "QBix"
+        "name": "   "
     },
     "toggle": {
         "open": "menu_open",

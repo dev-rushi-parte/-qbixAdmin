@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { Item, Anchor } from "../../components/elements";
 import { CardLayout, CardHeader, FloatCard } from "../../components/cards";
@@ -7,23 +7,56 @@ import OrdersTable from "../../components/tables/OrdersTable";
 import LabelField from "../../components/fields/LabelField";
 import PageLayout from "../../layouts/PageLayout";
 import data from "../../data/master/orderList.json";
+import { getLocalData, SaveTheToken } from "../../Utils/localStorage";
+import { LoaderProvider } from "../../context/Preloader";
 
 export default function OrderList() {
+    const [tbody, setTbody] = useState()
+    const [loading, setLoading] = useState(true)
+    const [orderStatus, setOrderStatus] = useState("select")
+    useEffect(() => {
+
+        fetch(`https://qbix54.onrender.com/admin/allorders?admin_jwt=${getLocalData("boxApi")}`)
+            .then((res) => res.json())
+            .then((res) => {
+                setTbody(res.data)
+                console.log(res.data)
+                SaveTheToken("allorders", res.data.length)
+                setLoading(false)
+
+            })
+    }, [])
+
+    const handleStatus = (e) => {
+        // console.log(e.target.value)
+
+        setOrderStatus(e.target.value)
+        if (e.target.value !== "select") {
+            setLoading(true)
+            fetch(`https://qbix54.onrender.com/admin/orderfilter?filter=${e.target.value}&admin_jwt=${getLocalData("boxApi")}`)
+                .then((res) => res.json())
+                .then((res) => {
+                    setTbody(res.data)
+                    // console.log(res.data)
+                    setLoading(false)
+
+                })
+        }
+
+    }
     return (
         <PageLayout>
             <Row>
                 <Col xl={12}>
                     <CardLayout>
-                        <Breadcrumb title={ data?.pageTitle }>
-                            {data?.breadcrumb.map((item, index) => (
-                                <Item key={ index } className="mc-breadcrumb-item">
-                                    {item.path ? <Anchor className="mc-breadcrumb-link" href={ item.path }>{ item.text }</Anchor> : item.text }
-                                </Item>
-                            ))}
+                        <Breadcrumb title={data?.pageTitle}>
+
                         </Breadcrumb>
                     </CardLayout>
                 </Col>
-                {data?.float.map((item, index) => (
+                <LoaderProvider loading={loading}>
+
+                    {/* {data?.float.map((item, index) => (
                     <Col key={ index } xl={3}>
                         <FloatCard 
                             variant = { item.variant }
@@ -32,34 +65,41 @@ export default function OrderList() {
                             icon = { item.icon }
                         />
                     </Col>
-                ))}
-                <Col xl={12}>
-                    <CardLayout>
-                        <CardHeader 
-                            title="order information" 
-                            dotsMenu={ data?.dotsMenu } 
-                        />
-                        <Row xs={1} sm={4} className="mb-4">
-                            {data?.filter.map((item, index)=> (
-                                <Col key={index}>
-                                    <LabelField 
-                                        type = { item.type }
-                                        label = { item.label }
-                                        option = { item.option }
-                                        placeholder = { item.placeholder }
-                                        labelDir = "label-col"
-                                        fieldSize = "w-100 h-md"
-                                    /> 
-                                </Col>
-                            ))}
-                        </Row>
-                        <OrdersTable 
-                            thead={ data?.table.thead } 
-                            tbody={ data?.table.tbody } 
-                        />
-                        <Pagination />
-                    </CardLayout>
-                </Col>
+                ))} */}
+                    <Col xl={12}>
+
+                        <CardLayout>
+                            <CardHeader
+                                title="order information"
+                                dotsMenu={data?.dotsMenu}
+                            />
+                            <Row xs={1} sm={4} className="mb-4">
+                                {data?.filter.map((item, index) => (
+                                    <Col key={index}>
+                                        <LabelField
+                                            value={orderStatus}
+                                            onChange={handleStatus}
+                                            type={item.type}
+                                            label={item.label}
+                                            option={item.option}
+                                            placeholder={item.placeholder}
+                                            labelDir="label-col"
+                                            fieldSize="w-100 h-md"
+                                        />
+                                    </Col>
+                                ))}
+                            </Row>
+                            {tbody?.length >= 1 ?
+                                <OrdersTable
+                                    thead={data?.table.thead}
+                                    tbody={tbody}
+                                /> : "No Result Found"}
+
+                            {/* <Pagination /> */}
+
+                        </CardLayout>
+                    </Col>
+                </LoaderProvider>
             </Row>
         </PageLayout>
     )
