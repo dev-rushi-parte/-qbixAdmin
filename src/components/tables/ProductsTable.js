@@ -51,10 +51,11 @@ export default function ProductsTable({ thead, tbody, handleChange }) {
             })
 
     }
+    console.log(data?.length)
 
     return (
         <Box className="mc-table-responsive">
-            <Table className="mc-table product">
+            {data?.length == undefined ? "Not have any data" : <Table className="mc-table product">
                 <Thead className="mc-table-head primary">
                     <Tr>
                         <Th>
@@ -125,7 +126,7 @@ export default function ProductsTable({ thead, tbody, handleChange }) {
                         </Tr>
                     ))}
                 </Tbody>
-            </Table >
+            </Table >}
 
             <Modal show={alertModal} onHide={() => setAlertModal(false)}>
                 <Box className="mc-alert-modal">

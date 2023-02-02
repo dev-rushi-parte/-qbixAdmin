@@ -19,10 +19,17 @@ export default function ProductList() {
         fetch(`https://qbix54.onrender.com/admin/allproduct?admin_jwt=${getLocalData("boxApi")}`)
             .then((res) => res.json())
             .then((res) => {
-                setTbody(res.data)
-                // console.log(res.data)
-                SaveTheToken("allproducts", res.data.length)
-                setLoading(false)
+                if (res.message) {
+                    SaveTheToken("allproducts", 0)
+                    setLoading(false)
+
+                }
+                else {
+                    setTbody(res.data)
+                    SaveTheToken("allproducts", res.data.length)
+                    console.log(res)
+                    setLoading(false)
+                }
             })
     }, [status])
 

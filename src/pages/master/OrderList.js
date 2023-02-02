@@ -19,11 +19,17 @@ export default function OrderList() {
         fetch(`https://qbix54.onrender.com/admin/allorders?admin_jwt=${getLocalData("boxApi")}`)
             .then((res) => res.json())
             .then((res) => {
-                setTbody(res.data)
-                console.log(res.data)
-                SaveTheToken("allorders", res.data.length)
-                setLoading(false)
+                if (res.message) {
+                    SaveTheToken("allorders", 0)
+                    setLoading(false)
 
+                }
+                else {
+                    setTbody(res.data)
+                    console.log(res)
+                    SaveTheToken("allorders", res.data.length)
+                    setLoading(false)
+                }
             })
     }, [])
 
