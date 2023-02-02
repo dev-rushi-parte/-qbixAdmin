@@ -15,43 +15,54 @@ export default function Ecommerce() {
     const [state, setState] = useState(false)
     const [loading, setLoading] = useState(true)
     useEffect(() => {
-
-
-        
-        fetch(`https://qbix54.onrender.com/admin/allusers?admin_jwt=${getLocalData("boxApi")}`)
-            .then((res) => res.json())
-            .then((res) => {
-
-                SaveTheToken("allusers", res.data.length)
-                setState(prv => !prv)
-                setLoading(false)
-
-            })
-
-
-
-       
-        fetch(`https://qbix54.onrender.com/admin/allorders?admin_jwt=${getLocalData("boxApi")}`)
-            .then((res) => res.json())
-            .then((res) => {
-
-                SaveTheToken("allorders", res.data.length)
-                setState(prv => !prv)
-                setLoading(false)
-
-
-            })
-        fetch(`https://qbix54.onrender.com/admin/allproduct?admin_jwt=${getLocalData("boxApi")}`)
-            .then((res) => res.json())
-            .then((res) => {
-                setLoading(false)
-                SaveTheToken("allproducts", res.data.length)
-                setState(prv => !prv)
-
-            })
-
         if (!getLocalData("boxApi")) {
             navigate("/login")
+        }
+        else {
+
+            fetch(`https://qbix54.onrender.com/admin/allusers?admin_jwt=${getLocalData("boxApi")}`)
+                .then((res) => res.json())
+                .then((res) => {
+
+                    SaveTheToken("allusers", res.data.length)
+                    setState(prv => !prv)
+                    setLoading(false)
+
+                })
+
+
+
+
+            fetch(`https://qbix54.onrender.com/admin/allorders?admin_jwt=${getLocalData("boxApi")}`)
+                .then((res) => res.json())
+                .then((res) => {
+                    if (res.message) {
+                        SaveTheToken("allorders", 0)
+                        setLoading(false)
+
+                    }
+                    else {
+                        SaveTheToken("allorders", res.data.length)
+                        setState(prv => !prv)
+                        setLoading(false)
+                    }
+
+                })
+            fetch(`https://qbix54.onrender.com/admin/allproduct?admin_jwt=${getLocalData("boxApi")}`)
+                .then((res) => res.json())
+                .then((res) => {
+                    if (res.message) {
+                        SaveTheToken("allproducts", 0)
+                        setLoading(false)
+
+                    } else {
+                        setLoading(false)
+                        SaveTheToken("allproducts", res.data.length)
+                        setState(prv => !prv)
+                    }
+
+                })
+
         }
     }, [])
 
