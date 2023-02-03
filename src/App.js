@@ -12,6 +12,9 @@ import ProductVariable from "./pages/master/ProductVariable";
 import UpdateOrder from "./pages/master/UpdateOrder";
 import SliderImage from "./pages/master/SliderImage";
 import UpdateSliderImg from "./pages/master/UpdateSliderImg";
+import AddSliderImg from "./pages/master/AddSliderImg";
+import CountryList from "./pages/master/CountryList";
+import EditCountry from "./pages/master/EditCountry";
 
 export default function App() {
     return (
@@ -24,20 +27,31 @@ export default function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/forgot-password" element={<ForgotPassword />} />
+
                     <Route path="/user-list" element={<UserList />} />
                     <Route path="/user-profile:id" element={<UserProfile />} />
+
                     <Route path="/my-account" element={<MyAccount />} />
+
                     <Route path="/product-list" element={<ProductList />} />
                     <Route path="/product-view:id" element={<ProductView />} />
                     <Route path="/product-edit:id" element={<EditProduct />} />
                     <Route path="/product-variable:id" element={<ProductVariable />} />
                     <Route path="/product-upload" element={<ProductUpload />} />
+
                     <Route path="/invoice-list" element={<InvoiceList />} />
-                    <Route path="/invoice-details" element={<InvoiceDetails />} />
+                    <Route path="/invoice-details:id" element={<InvoiceDetails />} />
+
                     <Route path="/order-list" element={<OrderList />} />
                     <Route path="/order:id" element={<UpdateOrder />} />
+
                     <Route path="/slider_img" element={<SliderImage />} />
                     <Route path="/slider_img_edit:id" element={<UpdateSliderImg />} />
+                    <Route path="/slider_img_add" element={<AddSliderImg />} />
+
+                    <Route path="/country" element={<CountryList />} />
+                    <Route path="/country_edit:id" element={<EditCountry />} />
+
                     <Route path="/message" element={<Message />} />
                     <Route path="/notification" element={<Notification />} />
                     <Route path="/settings" element={<Settings />} />

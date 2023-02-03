@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
-import { CardLayout} from "../../components/cards";
+import { CardLayout } from "../../components/cards";
 import { Breadcrumb, Pagination } from "../../components";
 import LabelField from "../../components/fields/LabelField";
-import UsersTable from "../../components/tables/UsersTable";
 import PageLayout from "../../layouts/PageLayout";
-import data from "../../data/master/userList.json";
-import { getLocalData, SaveTheToken } from "../../Utils/localStorage";
+import data from "../../data/master/CountryList.json";
+import { getLocalData } from "../../Utils/localStorage";
 import { LoaderProvider } from "../../context/Preloader";
+import CountryTable from "../../components/tables/CountryTable";
 
-export default function UserList() {
+export default function CountryList() {
     const [tbody, setTbody] = useState()
     const [loading, setLoading] = useState(true)
     useEffect(() => {
-        fetch(`https://qbix54.onrender.com/admin/allusers?admin_jwt=${getLocalData("boxApi")}`)
+        setLoading(true)
+        fetch(`https://qbix54.onrender.com/admin/getcountry?admin_jwt=${getLocalData("boxApi")}`)
             .then((res) => res.json())
             .then((res) => {
                 setTbody(res.data)
-                // console.log(res.data)
-                SaveTheToken("allusers", res.data.length)
+                console.log(res.data)
+
                 setLoading(false)
 
             })
@@ -64,7 +65,7 @@ export default function UserList() {
                                 </Col>
                             ))}
                         </Row> */}
-                            <UsersTable
+                            <CountryTable
                                 thead={data?.table.thead}
                                 tbody={tbody}
                             />

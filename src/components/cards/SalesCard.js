@@ -6,7 +6,7 @@ import { Box, Text, Heading, Icon } from "../elements";
 export default function SalesCard ({ chart, title, amount, percent, trendIcon, compare, dotsMenu }) {
     return (
         <Box className="mc-sales-card">
-            <Box className="mc-sales-card-group">
+            <Box className="mc-sales-card-group pb-5">
                 <CardHeader title={ title } dotsMenu={ dotsMenu } />
                 <Box className={`mc-sales-card-amount ${trendIcon === "trending_up" ? "green" : "red"}`}>
                     <Heading as="h3">{ amount }</Heading>
@@ -14,7 +14,7 @@ export default function SalesCard ({ chart, title, amount, percent, trendIcon, c
                 </Box>
                 <Text className="mc-sales-card-compare">{ compare }</Text>
             </Box>
-            <SalesChart chart={ chart } />
+            {/* <SalesChart chart={ chart } /> */}
         </Box>
     );
 }

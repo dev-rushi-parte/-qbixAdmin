@@ -13,10 +13,26 @@ import { LoaderProvider } from "../../context/Preloader";
 export default function OrderList() {
     const [tbody, setTbody] = useState()
     const [loading, setLoading] = useState(true)
-    const [orderStatus, setOrderStatus] = useState("select")
+    const [paymentStatus, setPaymentStatus] = useState("completed")
     useEffect(() => {
-
+        setLoading(true)
         fetch(`https://qbix54.onrender.com/admin/allorders?admin_jwt=${getLocalData("boxApi")}`)
+            .then((res) => res.json())
+            .then((res) => {
+                if (res.message) {
+                    SaveTheToken("allorders", 0)
+
+
+                }
+                else {
+
+                    SaveTheToken("allorders", res.data.length)
+
+                }
+            })
+
+
+        fetch(`https://qbix54.onrender.com/admin/orderfilter?filter=completed&admin_jwt=${getLocalData("boxApi")}`)
             .then((res) => res.json())
             .then((res) => {
                 if (res.message) {
@@ -26,7 +42,7 @@ export default function OrderList() {
                 }
                 else {
                     setTbody(res.data)
-                    console.log(res)
+                    // console.log(res)
                     SaveTheToken("allorders", res.data.length)
                     setLoading(false)
                 }
@@ -36,7 +52,7 @@ export default function OrderList() {
     const handleStatus = (e) => {
         // console.log(e.target.value)
 
-        setOrderStatus(e.target.value)
+        setPaymentStatus(e.target.value)
         if (e.target.value !== "select") {
             setLoading(true)
             fetch(`https://qbix54.onrender.com/admin/orderfilter?filter=${e.target.value}&admin_jwt=${getLocalData("boxApi")}`)
@@ -46,6 +62,25 @@ export default function OrderList() {
                     // console.log(res.data)
                     setLoading(false)
 
+                })
+        }
+        else {
+            setLoading(true)
+
+            fetch(`https://qbix54.onrender.com/admin/allorders?admin_jwt=${getLocalData("boxApi")}`)
+                .then((res) => res.json())
+                .then((res) => {
+                    if (res.message) {
+                        SaveTheToken("allorders", 0)
+                        setLoading(false)
+
+                    }
+                    else {
+                        setTbody(res.data)
+                        // console.log(res)
+                        SaveTheToken("allorders", res.data.length)
+                        setLoading(false)
+                    }
                 })
         }
 
@@ -83,7 +118,7 @@ export default function OrderList() {
                                 {data?.filter.map((item, index) => (
                                     <Col key={index}>
                                         <LabelField
-                                            value={orderStatus}
+                                            value={paymentStatus}
                                             onChange={handleStatus}
                                             type={item.type}
                                             label={item.label}

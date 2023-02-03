@@ -6,33 +6,17 @@
                 {
                     "icon": "dashboard",
                     "text": "dashboard",
-                    "submenu": [
-                        {
-                            "href": "/",
-                            "text": "home"
-                        }
-                    ]
+                    "href": "/"
                 },
                 {
-                    "icon": "lock",
-                    "text": "authentication",
-                    "submenu": [
-                        {
-                            "href": "/login",
-                            "text": "login"
-                        }
-                        
-                    ]
+                    "icon": "circle",
+                    "text": "Country",
+                    "href": "/country"
                 },
                 {
                     "icon": "account_circle",
-                    "text": "users",
-                    "submenu": [
-                        {
-                            "href": "/user-list",
-                            "text": "user list"
-                        }
-                    ]
+                    "text": "user list",
+                    "href": "/user-list"
                 },
                 {
                     "icon": "pix",
@@ -57,11 +41,6 @@
                     "href": "/slider_img",
                     "icon": "image",
                     "text": "SliderImg"
-                },
-                {
-                    "href": "/settings",
-                    "icon": "settings",
-                    "text": "settings"
                 }
             ]
         }

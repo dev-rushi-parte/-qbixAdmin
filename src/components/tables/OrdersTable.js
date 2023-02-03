@@ -62,15 +62,16 @@ export default function OrderTable({ thead, tbody }) {
                                     <Text>{ item.name }</Text>
                                 </Box>
                             </Td> */}
-                            <Td>{"product name"}</Td>
-                            <Td>{'amount'}</Td>
+                            <Td>{item?.userid?.fullname}</Td>
+                            <Td>{item?.userid?.email}</Td>
+                            <Td>{item?.amount}</Td>
                             <Td><Text className={`mc-table-badge ${item?.transactionstatus === 'completed' ? "green" : "purple"}`}>{item?.transactionstatus}</Text></Td>
                             <Td><Text className={`mc-table-badge ${item?.orderstatus === 'completed' ? "green" : "purple"}`}>{item?.orderstatus}</Text></Td>
-                            <Td>{item.ordermessagefromadmin}</Td>
-                            <Td>{item.orderdate}</Td>
+                            <Td>{item?.ordermessagefromadmin}</Td>
+                            <Td>{item?.orderdate}</Td>
                             <Td>
                                 <Box className="mc-table-action">
-                                    <Anchor title="View" href="/invoice-details" className="material-icons view">{'visibility'}</Anchor>
+                                    {item?.transactionstatus === 'completed' ? <Anchor title="View" href={`/invoice-details${item._id}`} className="material-icons view">{'visibility'}</Anchor> : ""}
                                     <Anchor title="Edit" href={`/order${item._id}`} className="material-icons download" download>{'edit'}</Anchor>
                                     {/* <Button title="Delete" className="material-icons delete" onClick={() => setAlertModal(true)}>{'delete'}</Button> */}
                                 </Box>

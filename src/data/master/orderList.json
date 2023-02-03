@@ -13,10 +13,10 @@
         { "title": "cancelled orders", "digit": "249", "icon": "remove_circle", "variant": "lg red" }
     ],
     "filter":[
-        { "label": "Order status by", "option": ["select","pending", "completed"] }
+        { "label": "payment status by", "option": ["select","pending", "completed"] }
     ],
     "table":{
-        "thead": [ "product", "amount", "payment", "status","admin message", "date time", "action"],
+        "thead": [ "user name","user email", "amount", "payment status", "status","admin message", "date time", "action"],
         "tbody": [
             {
                 "id": "#4980",

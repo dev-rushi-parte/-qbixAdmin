@@ -14,6 +14,16 @@ export default function Ecommerce() {
     const navigate = useNavigate()
     const [state, setState] = useState(false)
     const [loading, setLoading] = useState(true)
+
+    const totalRevenue = (data) => {
+        // console.log(data)
+
+        const totalSale = data?.reduce((ac, cv) => { return Number(ac) + Number(cv.amount) }, 0)
+        // console.log(totalSale)
+        SaveTheToken("totalRevenue", totalSale)
+
+    }
+
     useEffect(() => {
         if (!getLocalData("boxApi")) {
             navigate("/login")
@@ -42,6 +52,8 @@ export default function Ecommerce() {
 
                     }
                     else {
+                        // console.log(res.data)
+                        totalRevenue(res.data)
                         SaveTheToken("allorders", res.data.length)
                         setState(prv => !prv)
                         setLoading(false)
@@ -65,6 +77,7 @@ export default function Ecommerce() {
 
         }
     }, [])
+
 
 
     return (
@@ -125,11 +138,11 @@ export default function Ecommerce() {
                     <Col xs={12} xl={4}>
                         <SalesCard
                             title={"Total Revenue"}
-                            amount={"₹40000"}
+                            amount={`₹ ${getLocalData('totalRevenue')}`}
                             // percent={data?.sales.percent}
-                            // trendIcon={data?.sales.trendIcon}
+                            trendIcon={data?.sales.trendIcon}
                             // dotsMenu={data?.sales.dotsMenu}
-                            compare={"₹40000"}
+                            // compare={"₹40000"}
                         // chart={data?.sales.chart}
                         />
                     </Col>
