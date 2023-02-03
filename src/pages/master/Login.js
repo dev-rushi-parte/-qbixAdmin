@@ -30,7 +30,7 @@ export default function Login() {
             .then((res) => {
                 console.log(res)
                 SaveTheToken("boxApi", res.adminjwt)
-                navigate(-1)
+                navigate("/")
             })
     }
     return (

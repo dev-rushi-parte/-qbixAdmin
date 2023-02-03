@@ -20,7 +20,7 @@ export default function UpdateOrder() {
 
 
     useEffect(() => {
-        // setLoading(true)
+        setLoading(true)
 
 
         fetch(`https://qbix54.onrender.com/admin/getorders/${id}?admin_jwt=${getLocalData("boxApi")}`)
