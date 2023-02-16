@@ -21,7 +21,7 @@ export default function ProductView() {
     console.log(productData)
     useEffect(() => {
         setLoading(true)
-        fetch(`https://qbix54.onrender.com/admin/getproduct/${id}?admin_jwt=${getLocalData("boxApi")}`)
+        fetch(`https://api.hthindia.in/admin/getproduct/${id}?admin_jwt=${getLocalData("boxApi")}`)
             .then((res) => res.json())
             .then((res) => {
                 setproductData(res.data[0])

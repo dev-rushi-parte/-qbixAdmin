@@ -21,7 +21,7 @@ export default function UpdateOrder() {
 
     useEffect(() => {
         setLoading(true)
-        fetch(`https://qbix54.onrender.com/admin/getorders/${id}?admin_jwt=${getLocalData("boxApi")}`)
+        fetch(`https://api.hthindia.in/admin/getorders/${id}?admin_jwt=${getLocalData("boxApi")}`)
             .then((res) => res.json())
             .then((res) => {
                 setProductData(res.data[0])
@@ -50,7 +50,7 @@ export default function UpdateOrder() {
 
         setLoading(true)
 
-        fetch(`https://qbix54.onrender.com/admin/orderupdate/${id}?admin_jwt=${getLocalData("boxApi")}`, {
+        fetch(`https://api.hthindia.in/admin/orderupdate/${id}?admin_jwt=${getLocalData("boxApi")}`, {
             method: "PATCH",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(productData)

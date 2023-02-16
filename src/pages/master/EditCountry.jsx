@@ -23,7 +23,7 @@ export default function EditCountry() {
         // setLoading(true)
 
 
-        fetch(`https://qbix54.onrender.com/admin/get_one_country/${id}?admin_jwt=${getLocalData("boxApi")}`)
+        fetch(`https://api.hthindia.in/admin/get_one_country/${id}?admin_jwt=${getLocalData("boxApi")}`)
             .then((res) => res.json())
             .then((res) => {
                 setProductData(res.data[0])
@@ -51,7 +51,7 @@ export default function EditCountry() {
         // console.log(productData)
         setLoading(true)
 
-        fetch(`https://qbix54.onrender.com/admin/editcountry/${id}?admin_jwt=${getLocalData("boxApi")}`, {
+        fetch(`https://api.hthindia.in/admin/editcountry/${id}?admin_jwt=${getLocalData("boxApi")}`, {
             method: "PATCH",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(productData)

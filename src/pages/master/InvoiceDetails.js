@@ -22,7 +22,7 @@ export default function InvoiceDetails() {
         setLoading(true)
 
 
-        fetch(`https://qbix54.onrender.com/admin/getorders/${id}?admin_jwt=${getLocalData("boxApi")}`)
+        fetch(`https://api.hthindia.in/admin/getorders/${id}?admin_jwt=${getLocalData("boxApi")}`)
             .then((res) => res.json())
             .then((res) => {
                 setOrderData(res.data[0])
@@ -31,7 +31,7 @@ export default function InvoiceDetails() {
 
             })
 
-        fetch(`https://qbix54.onrender.com/admin/getorders_product/${id}?admin_jwt=${getLocalData("boxApi")}`)
+        fetch(`https://api.hthindia.in/admin/getorders_product/${id}?admin_jwt=${getLocalData("boxApi")}`)
             .then((res) => res.json())
             .then((res) => {
                 setProductData(res.data)

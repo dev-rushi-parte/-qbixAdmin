@@ -14,7 +14,7 @@ export default function UserProfile() {
 
     useEffect(() => {
 
-        fetch(`https://qbix54.onrender.com/admin/getusers/${id}?admin_jwt=${getLocalData("boxApi")}`)
+        fetch(`https://api.hthindia.in/admin/getusers/${id}?admin_jwt=${getLocalData("boxApi")}`)
             .then((res) => res.json())
             .then((res) => {
                 setUserData(res.data[0])

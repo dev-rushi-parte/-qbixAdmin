@@ -25,7 +25,7 @@ export default function SliderImage() {
     const handelDeletet = () => {
 
         if (deleteId !== "") {
-            fetch(`https://qbix54.onrender.com/admin/slider_img_delete/${deleteId}?admin_jwt=${getLocalData("boxApi")}`, {
+            fetch(`https://api.hthindia.in/admin/slider_img_delete/${deleteId}?admin_jwt=${getLocalData("boxApi")}`, {
                 method: "DELETE"
             })
                 .then((res) => res.json())
@@ -44,7 +44,7 @@ export default function SliderImage() {
 
 
         setLoading(true)
-        fetch(`https://qbix54.onrender.com/admin/allslider?admin_jwt=${getLocalData("boxApi")}`)
+        fetch(`https://api.hthindia.in/admin/allslider?admin_jwt=${getLocalData("boxApi")}`)
             .then((res) => res.json())
             .then((res) => {
                 setProductData(res.data)

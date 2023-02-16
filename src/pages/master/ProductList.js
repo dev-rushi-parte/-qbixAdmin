@@ -16,7 +16,7 @@ export default function ProductList() {
     // let thead = ["product", "category", "brand", "price", "stock", "rating", "order", "sales", "action"],
     useEffect(() => {
         setLoading(true)
-        fetch(`https://qbix54.onrender.com/admin/allproduct?admin_jwt=${getLocalData("boxApi")}`)
+        fetch(`https://api.hthindia.in/admin/allproduct?admin_jwt=${getLocalData("boxApi")}`)
             .then((res) => res.json())
             .then((res) => {
                 if (res.message) {

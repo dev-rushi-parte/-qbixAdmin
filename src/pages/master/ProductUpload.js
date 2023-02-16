@@ -21,7 +21,7 @@ export default function ProductUpload() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch('https://qbix54.onrender.com/admin/getcategory', {
+        fetch('https://api.hthindia.in/admin/getcategory', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ admin_jwt: getLocalData("boxApi") })
@@ -70,7 +70,7 @@ export default function ProductUpload() {
 
 
         // console.log(productData)
-        fetch(`https://qbix54.onrender.com/admin/addproduct/?admin_jwt=${getLocalData("boxApi")}`, {
+        fetch(`https://api.hthindia.in/admin/addproduct/?admin_jwt=${getLocalData("boxApi")}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(productData)

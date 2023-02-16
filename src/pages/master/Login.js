@@ -21,7 +21,7 @@ export default function Login() {
     const handelLogin = async (event) => {
         event.preventDefault()
         console.log(userData)
-        await fetch('https://qbix54.onrender.com/admin/login', {
+        await fetch('https://api.hthindia.in/admin/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(userData)

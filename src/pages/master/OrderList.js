@@ -16,7 +16,7 @@ export default function OrderList() {
     const [paymentStatus, setPaymentStatus] = useState("completed")
     useEffect(() => {
         setLoading(true)
-        fetch(`https://qbix54.onrender.com/admin/allorders?admin_jwt=${getLocalData("boxApi")}`)
+        fetch(`https://api.hthindia.in/admin/allorders?admin_jwt=${getLocalData("boxApi")}`)
             .then((res) => res.json())
             .then((res) => {
                 if (res.message) {
@@ -32,7 +32,7 @@ export default function OrderList() {
             })
 
 
-        fetch(`https://qbix54.onrender.com/admin/orderfilter?filter=completed&admin_jwt=${getLocalData("boxApi")}`)
+        fetch(`https://api.hthindia.in/admin/orderfilter?filter=completed&admin_jwt=${getLocalData("boxApi")}`)
             .then((res) => res.json())
             .then((res) => {
                 if (res.message) {
@@ -55,7 +55,7 @@ export default function OrderList() {
         setPaymentStatus(e.target.value)
         if (e.target.value !== "select") {
             setLoading(true)
-            fetch(`https://qbix54.onrender.com/admin/orderfilter?filter=${e.target.value}&admin_jwt=${getLocalData("boxApi")}`)
+            fetch(`https://api.hthindia.in/admin/orderfilter?filter=${e.target.value}&admin_jwt=${getLocalData("boxApi")}`)
                 .then((res) => res.json())
                 .then((res) => {
                     setTbody(res.data)
@@ -67,7 +67,7 @@ export default function OrderList() {
         else {
             setLoading(true)
 
-            fetch(`https://qbix54.onrender.com/admin/allorders?admin_jwt=${getLocalData("boxApi")}`)
+            fetch(`https://api.hthindia.in/admin/allorders?admin_jwt=${getLocalData("boxApi")}`)
                 .then((res) => res.json())
                 .then((res) => {
                     if (res.message) {

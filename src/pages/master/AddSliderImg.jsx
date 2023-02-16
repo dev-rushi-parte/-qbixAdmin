@@ -35,7 +35,7 @@ export default function AddSliderImg() {
 
         if (productData.sliderimage !== "") {
             setLoading(true)
-            fetch(`https://qbix54.onrender.com/admin/slider_img_add/?admin_jwt=${getLocalData("boxApi")}`, {
+            fetch(`https://api.hthindia.in/admin/slider_img_add/?admin_jwt=${getLocalData("boxApi")}`, {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ sliderimage: productData.sliderimage })

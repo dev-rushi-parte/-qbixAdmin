@@ -24,7 +24,7 @@ export default function UpdateSliderImg() {
         setLoading(true)
 
 
-        fetch(`https://qbix54.onrender.com/admin/getslider/${id}?admin_jwt=${getLocalData("boxApi")}`)
+        fetch(`https://api.hthindia.in/admin/getslider/${id}?admin_jwt=${getLocalData("boxApi")}`)
             .then((res) => res.json())
             .then((res) => {
                 setProductData(res.data[0])
@@ -53,7 +53,7 @@ export default function UpdateSliderImg() {
         if (productData.sliderimage !== orignalData.sliderimage) {
             setLoading(true)
 
-            fetch(`https://qbix54.onrender.com/admin/updateslider/${id}?admin_jwt=${getLocalData("boxApi")}`, {
+            fetch(`https://api.hthindia.in/admin/updateslider/${id}?admin_jwt=${getLocalData("boxApi")}`, {
                 method: "PATCH",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(productData)

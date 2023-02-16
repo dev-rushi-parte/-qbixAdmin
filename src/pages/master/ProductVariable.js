@@ -23,7 +23,7 @@ export default function ProductVariable() {
 
     useEffect(() => {
         setLoading(true)
-        fetch('https://qbix54.onrender.com/admin/getcategory', {
+        fetch('https://api.hthindia.in/admin/getcategory', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ admin_jwt: getLocalData("boxApi") })
@@ -38,7 +38,7 @@ export default function ProductVariable() {
                 ))
             })
 
-        fetch(`https://qbix54.onrender.com/admin/getproduct/${id}?admin_jwt=${getLocalData("boxApi")}`)
+        fetch(`https://api.hthindia.in/admin/getproduct/${id}?admin_jwt=${getLocalData("boxApi")}`)
             .then((res) => res.json())
             .then((res) => {
                 setProductData(res.data[0])
@@ -68,7 +68,7 @@ export default function ProductVariable() {
 
 
     const handelSubmit = () => {
-        fetch(`https://qbix54.onrender.com/admin/variableproduct?admin_jwt=${getLocalData("boxApi")}`, {
+        fetch(`https://api.hthindia.in/admin/variableproduct?admin_jwt=${getLocalData("boxApi")}`, {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(productData)

@@ -14,7 +14,7 @@ export default function CountryList() {
     const [loading, setLoading] = useState(true)
     useEffect(() => {
         setLoading(true)
-        fetch(`https://qbix54.onrender.com/admin/getcountry?admin_jwt=${getLocalData("boxApi")}`)
+        fetch(`https://api.hthindia.in/admin/getcountry?admin_jwt=${getLocalData("boxApi")}`)
             .then((res) => res.json())
             .then((res) => {
                 setTbody(res.data)

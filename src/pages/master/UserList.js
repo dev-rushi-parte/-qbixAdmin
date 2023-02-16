@@ -13,7 +13,7 @@ export default function UserList() {
     const [tbody, setTbody] = useState()
     const [loading, setLoading] = useState(true)
     useEffect(() => {
-        fetch(`https://qbix54.onrender.com/admin/allusers?admin_jwt=${getLocalData("boxApi")}`)
+        fetch(`https://api.hthindia.in/admin/allusers?admin_jwt=${getLocalData("boxApi")}`)
             .then((res) => res.json())
             .then((res) => {
                 setTbody(res.data)

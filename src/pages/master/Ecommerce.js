@@ -30,7 +30,7 @@ export default function Ecommerce() {
         }
         else {
 
-            fetch(`https://qbix54.onrender.com/admin/allusers?admin_jwt=${getLocalData("boxApi")}`)
+            fetch(`https://api.hthindia.in/admin/allusers?admin_jwt=${getLocalData("boxApi")}`)
                 .then((res) => res.json())
                 .then((res) => {
 
@@ -43,7 +43,7 @@ export default function Ecommerce() {
 
 
 
-            fetch(`https://qbix54.onrender.com/admin/allorders?admin_jwt=${getLocalData("boxApi")}`)
+            fetch(`https://api.hthindia.in/admin/allorders?admin_jwt=${getLocalData("boxApi")}`)
                 .then((res) => res.json())
                 .then((res) => {
                     if (res.message) {
@@ -60,7 +60,7 @@ export default function Ecommerce() {
                     }
 
                 })
-            fetch(`https://qbix54.onrender.com/admin/allproduct?admin_jwt=${getLocalData("boxApi")}`)
+            fetch(`https://api.hthindia.in/admin/allproduct?admin_jwt=${getLocalData("boxApi")}`)
                 .then((res) => res.json())
                 .then((res) => {
                     if (res.message) {
